@@ -1,4 +1,4 @@
-public enum Dificuldade {
+public enum dificuldade {
 
     FACIL(1),
 
@@ -8,7 +8,7 @@ public enum Dificuldade {
 
     private final int nivel;
 
-    Dificuldade(int nivel) {
+    dificuldade(int nivel) {
 
         this.nivel = nivel;
 
