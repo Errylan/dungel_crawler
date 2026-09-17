@@ -5,7 +5,7 @@ import java.util.*;
 public class labirinto {
     private int largura;
     private int altura;
-    private int[][] map;
+    private int[][] mapa;
     private Random random = new Random();
 
     // 0 = parede, 1 = caminho, 2 = saída, 3 = início
