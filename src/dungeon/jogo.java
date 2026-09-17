@@ -1,14 +1,16 @@
 package dungeon;
 
-import java.util.*;
 
 public class jogo {
     public static void main(String[]args){
-        Scanner s = new Scanner(System.in);
-        System.out.println("Digite uma letra");
+        int largura = 5;
+        int altura = 5;
+        double chanceRemoverParede = 0.1;
 
-        String letra = s.nextLine();
-        System.out.println("Letra: "+ letra );
+        labirinto lab = new labirinto(largura, altura);
+        lab.gerarLabirinto();
+        lab.removerParedesExtras(chanceRemoverParede);
+        lab.exibirLabirinto();
 
 
     }

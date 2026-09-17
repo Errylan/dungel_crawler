@@ -1,11 +1,11 @@
 package dungeon;
 
-public class Posicao {
+public class posicao {
 
     private int linha;
     private int coluna;
 
-    public Posicao(int linha, int coluna) {
+    public posicao(int linha, int coluna) {
         this.linha = linha;
         this.coluna = coluna;
     }
