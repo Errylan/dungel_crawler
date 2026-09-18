@@ -7,5 +7,5 @@ jobs:
       - name: Enviar Webhook via cURL
         run: |
           curl -H "Content-Type: application/json" \
-          -d '{"content": "<@777672689556520991> 🚨 **Novo Commit!**\nO usuário `${{ github.actor }}` enviou novas atualizações para o repositório `${{ github.repository }}`.", "allowed_mentions": { "parse": ["users"] }}' \
+          -d '{"content": "@everyone 🚨 **Novo Commit!**\nO usuário `${{ github.actor }}` enviou novas atualizações para o repositório `${{ github.repository }}`."}' \
           ${{ secrets.DISCORD_WEBHOOK }}
