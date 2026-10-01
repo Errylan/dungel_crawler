@@ -10,5 +10,5 @@ public class Main {
         lab.gerarLabirinto();
         lab.removerParedesExtras(chanceRemoverParede);
         lab.exibirLabirinto();
-    }
+   java  }
 }
