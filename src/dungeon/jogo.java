@@ -12,6 +12,7 @@ public class jogo {
 
         int opcao;
         do {
+            System.out.println("\n///// MENU DE DIFICULDADE ///");
             System.out.println("\nEscolha a dificuldade:");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
