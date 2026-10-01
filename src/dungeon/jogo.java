@@ -43,15 +43,15 @@ public class jogo {
         Dificuldade dificuldade;
         switch (opcao) {
             case 1:
-                System.out.println("Você escolheu: Fácil");
+                System.out.println("Você escolheu: 1- Fácil");
                 dificuldade = Dificuldade.FACIL;
                 break;
             case 2:
-                System.out.println("Você escolheu: Médio");
+                System.out.println("Você escolheu: 2 -Médio");
                 dificuldade = Dificuldade.MEDIO;
                 break;
             case 3:
-                System.out.println("Você escolheu: Difícil");
+                System.out.println("Você escolheu: 3- Difícil");
                 dificuldade = Dificuldade.DIFICIL;
                 break;
             default:
