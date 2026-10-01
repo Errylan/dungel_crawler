@@ -1,0 +1,11 @@
+name: Alerta Discord
+on: [push]
+jobs:
+  notificar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar Webhook via cURL
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{"content": "@everyone 🚨 **Novo Commit!**\nO usuário `${{ github.actor }}` enviou novas atualizações para o repositório `${{ github.repository }}`."}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
