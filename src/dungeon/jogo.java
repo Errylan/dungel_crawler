@@ -10,23 +10,34 @@ public class jogo {
         String usuario = sc.nextLine();
         System.out.println("\nOlá, " + usuario + "!");
 
-        int opcao;
+        int opcaoMenu = 0 ;
         do {
-            System.out.println("\n///// MENU DE DIFICULDADE ///");
+            System.out.println("\n///// MENU PRINCIPAL ///");
+            System.out.println("\n Escolha uma opção:");
+            System.out.println("1 - Novo Jogo");
+            System.out.println("2 - Tutorial");
+            System.out.println("3 - Sair");
+
+            switch (opcaoMenu) {
+            case 1:
+                System.out.println("\n///// MENU DE DIFICULDADE ///");
             System.out.println("\nEscolha a dificuldade:");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
             System.out.println("3 - Difícil");
             System.out.println("4 - Sair");
+                break;
+            case 2:
+                break;
+            default:
+                return;
+        }
 
-            while (!sc.hasNextInt()) {
-                System.out.println("Digite o número de uma opção.");
-                sc.nextLine();
-            }
+            
 
-            opcao = sc.nextInt();
+            opcaoMenu = sc.nextInt();
 
-            if (opcao == 4) {
+            if (opcaoMenu == 3) {
                 System.out.print("Tem certeza que deseja sair? (S/N): ");
                 String confirmacao = sc.next();
                 if (confirmacao.equalsIgnoreCase("s")) {
@@ -34,34 +45,13 @@ public class jogo {
                     return;
                 }
                 System.out.println("Voltando ao menu.");
-                opcao = 0;
-            } else if (opcao < 1 || opcao > 4) {
-                System.out.println("Opção inválida. Escolha de 1 a 4.");
+                opcaoMenu = 0;
+            } else if (opcaoMenu < 1 || opcaoMenu > 4) {
+                System.out.println("Opção inválida. Escolha de 1 a 3.");
             }
-        } while (opcao < 1 || opcao > 3);
+        } while (opcaoMenu < 1 || opcaoMenu > 3);
 
-        Dificuldade dificuldade;
-        switch (opcao) {
-            case 1:
-                System.out.println("Você escolheu: 1- Fácil");
-                dificuldade = Dificuldade.FACIL;
-                break;
-            case 2:
-                System.out.println("Você escolheu: 2 -Médio");
-                dificuldade = Dificuldade.MEDIO;
-                break;
-            case 3:
-                System.out.println("Você escolheu: 3- Difícil");
-                dificuldade = Dificuldade.DIFICIL;
-                break;
-            default:
-                return;
-        }
-
-        labirinto lab = new labirinto(dificuldade.getLargura(), dificuldade.getAltura());
-        lab.gerarLabirinto();
-        lab.removerParedesExtras(dificuldade.getChanceRemoverParede());
-        lab.exibirLabirinto();
+       
     }
 }
 
