@@ -6,9 +6,9 @@ public class Main {
         int altura = 5;
         double chanceRemoverParede = 0.1;
 
-        labirinto lab = new labirinto(largura, altura);
+        Labirinto lab = new Labirinto(largura, altura);
         lab.gerarLabirinto();
         lab.removerParedesExtras(chanceRemoverParede);
         lab.exibirLabirinto();
-   java  }
+    }
 }

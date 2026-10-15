@@ -33,8 +33,6 @@ public class jogo {
                 return;
         }
 
-            
-
             opcaoMenu = sc.nextInt();
 
             if (opcaoMenu == 3) {

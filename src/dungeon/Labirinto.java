@@ -3,7 +3,7 @@ package dungeon;
 import java.util.*;
 
 // Classe para gerar e exibir um labirinto
-public class labirinto {
+public class Labirinto {
     private int largura; //escolhi usar private pois se for public, qualquer um poderia alterar a largura e altura do labirinto, o que poderia quebrar a lógica do programa
     private int altura; //mesma logica
     private int[][] mapa; //mesma logica
@@ -15,7 +15,7 @@ public class labirinto {
     private static final String VERDE = "\u001B[42m"; //mesma logica
 
     // Construtor que inicializa o labirinto com a largura e altura especificadas
-    public labirinto(int largura, int altura) {
+    public Labirinto(int largura, int altura) {
         this.largura = largura; //Copia o valor recebido no parâmetro para o atributo da classe
         this.altura = altura; //mesma logica
         this.mapa = new int[altura * 2 + 1][largura * 2 + 1]; //Cria a matriz que representa o labirinto, com altura * 2 + 1 linhas e largura * 2 + 1 colunas.
@@ -111,6 +111,23 @@ public class labirinto {
         int paredeColuna = (coluna1 * 2 + 1 + coluna2 * 2 + 1) / 2;
         return mapa[paredeLinha][paredeColuna] != 0;
     }
+
+    // Método para o jogador consultar se a posição de destino está livre
+    public boolean ehCaminho(Posicao posicao) {
+        // Converte a coordenada lógica do jogador para a coordenada real da matriz do mapa
+        int linhaMapa = posicao.getLinha() * 2 + 1;
+        int colunaMapa = posicao.getColuna() * 2 + 1;
+
+        // Verifica se a posição solicitada está dentro dos limites da matriz
+        if (linhaMapa < 0 || linhaMapa >= mapa.length || colunaMapa < 0 || colunaMapa >= mapa[0].length) {
+            return false;
+        }
+
+        // Retorna true se a célula for caminho (1), saída (2) ou início (3)
+        int valorDaCelula = mapa[linhaMapa][colunaMapa];
+        return valorDaCelula == 1 || valorDaCelula == 2 || valorDaCelula == 3;
+    }
+
     // Método público que exibe o labirinto no console com cores para saída e início
     public void exibirLabirinto() {
         for (int i = 0; i < mapa.length; i++) { // percorre todas as linhas do mapa
