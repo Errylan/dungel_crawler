@@ -10,13 +10,15 @@ public class jogo {
         String usuario = sc.nextLine();
         System.out.println("\nOlá, " + usuario + "!");
 
-        int opcaoMenu = 0 ;
-        do {
+        int opcaoMenu = 0;
             System.out.println("\n///// MENU PRINCIPAL ///");
             System.out.println("\n Escolha uma opção:");
             System.out.println("1 - Novo Jogo");
             System.out.println("2 - Tutorial");
             System.out.println("3 - Sair");
+
+        opcaoMenu = sc.nextInt();
+
 
             switch (opcaoMenu) {
             case 1:
