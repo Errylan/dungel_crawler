@@ -30,7 +30,7 @@ public class Jogador {
 
         Posicao novaPosicao = new Posicao(novaLinha, novaColuna);
 
-        if (!labirinto.ehCaminho(novaPosicao)){
+        if (labirinto.podeMover(posicaoAtual, novaPosicao)){
             posicaoAtual.setLinha(novaLinha);
             posicaoAtual.setColuna(novaColuna);
             return true; //movimento bem-sucedido

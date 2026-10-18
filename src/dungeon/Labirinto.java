@@ -128,11 +128,47 @@ public class Labirinto {
         return valorDaCelula == 1 || valorDaCelula == 2 || valorDaCelula == 3;
     }
 
+    public boolean podeMover(Posicao origem, Posicao destino) {
+        if (!ehCaminho(origem) || !ehCaminho(destino)) {
+            return false;
+        }
+
+        int distancia = Math.abs(origem.getLinha() - destino.getLinha())
+                + Math.abs(origem.getColuna() - destino.getColuna());
+        if (distancia != 1) {
+            return false;
+        }
+
+        return existeCaminho(
+                origem.getLinha(),
+                origem.getColuna(),
+                destino.getLinha(),
+                destino.getColuna()
+        );
+    }
+
+    public boolean ehSaida(Posicao posicao) {
+        int linhaMapa = posicao.getLinha() * 2 + 1;
+        int colunaMapa = posicao.getColuna() * 2 + 1;
+        return linhaMapa >= 0 && linhaMapa < mapa.length
+                && colunaMapa >= 0 && colunaMapa < mapa[0].length
+                && mapa[linhaMapa][colunaMapa] == 2;
+    }
+
     // Método público que exibe o labirinto no console com cores para saída e início
     public void exibirLabirinto() {
+        exibirLabirinto(null);
+    }
+
+    public void exibirLabirinto(Posicao posicaoJogador) {
         for (int i = 0; i < mapa.length; i++) { // percorre todas as linhas do mapa
             for (int j = 0; j < mapa[0].length; j++) { // percorre todas as colunas do mapa
-                if (mapa[i][j] == 2) {
+                boolean jogadorNestaCelula = posicaoJogador != null
+                        && i == posicaoJogador.getLinha() * 2 + 1
+                        && j == posicaoJogador.getColuna() * 2 + 1;
+                if (jogadorNestaCelula) {
+                    System.out.print("@@");
+                } else if (mapa[i][j] == 2) {
                     System.out.print(VERMELHO + "  " + RESET); // se a célula atual é a saída (2), imprime um bloco vermelho
                 } else if (mapa[i][j] == 3) {
                     System.out.print(VERDE + "  " + RESET); // se a célula atual é o início (3), imprime um bloco verde
