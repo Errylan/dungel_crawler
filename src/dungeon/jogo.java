@@ -94,6 +94,8 @@ public class jogo {
         Jogador jogador = new Jogador();
         int movimentos = 0;
         String aviso = "";
+        long inicio = System.currentTimeMillis();
+        long tempoPausado = 0;
 
         // Loop da partida
         boolean emPartida = true;
@@ -109,15 +111,20 @@ public class jogo {
             String entrada = sc.nextLine().trim();
 
             if (entrada.equalsIgnoreCase("p")) {
+                long inicioPausa = System.currentTimeMillis();
                 emPartida = exibirPausa(sc);
+                tempoPausado += System.currentTimeMillis() - inicioPausa;
             } else if (entrada.length() == 1 && "wasd".indexOf(Character.toLowerCase(entrada.charAt(0))) >= 0) {
                 if (jogador.tentarMover(entrada.charAt(0), labirinto)) {
                     movimentos++;
                     if (labirinto.ehSaida(jogador.getPosicaoAtual())) {
+                        long tempoSegundos = (System.currentTimeMillis() - inicio - tempoPausado) / 1000;
+                        long pontuacao = Math.max(0L, 1000L - movimentos * 10L - tempoSegundos);
                         System.out.println();
                         labirinto.exibirLabirinto(jogador.getPosicaoAtual());
                         System.out.println("\nParabéns, " + usuario + "! Você encontrou a saída em "
-                                + movimentos + " movimentos!");
+                                + movimentos + " movimentos e " + tempoSegundos + " segundos!");
+                        System.out.println("Pontuação: " + pontuacao);
                         emPartida = false;
                     }
                 } else {
